@@ -7,6 +7,13 @@ import { scrapeLinkedInProfile } from './third_parties/linkedin';
 async function main() {
   dotenv.config();
 
+  if (process.argv.length === 2) {
+    console.log('Please provide a name to lookup');
+    process.exit(1);
+  }
+
+  const name = process.argv[2];
+
   const summaryTemplate = `\
   given the LinkedIn information {information} about a person I want you to create:
     1. a short summary
@@ -26,7 +33,7 @@ async function main() {
 
   const chain = new LLMChain({ llm, prompt: template });
 
-  const linkedInProfileURL = await lookup('Harrison Chase');
+  const linkedInProfileURL = await lookup(name);
 
   console.log(linkedInProfileURL);
 
