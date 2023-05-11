@@ -18,7 +18,7 @@ export async function lookup(name: string): Promise<string> {
   const tools: Tool[] = [
     new GetProfileURL(
       process.env.SERP_API_KEY as string,
-      'GetLinkedInProfileURL',
+      'Crawl Google for LinkedIn profile page',
       'useful for when you need to get the LinkedIn Page URL'
     ),
   ];
